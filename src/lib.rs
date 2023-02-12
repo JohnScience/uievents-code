@@ -90,6 +90,7 @@ pub mod functional {
     }
     pub use japanese_and_korean::*;
 }
+pub use functional::*;
 
 /// Control Pad Keys as defined in
 /// <https://www.w3.org/TR/2017/CR-uievents-code-20170601/#key-controlpad-section>.
@@ -245,7 +246,7 @@ pub mod non_standard_intl {
 }
 #[cfg(any(feature = "non_standard_intl", doc))]
 #[cfg_attr(doc_cfg, doc(cfg(feature = "non_standard_intl")))]
-use self::non_standard_intl::*;
+pub use self::non_standard_intl::*;
 
 /// Special Keys as defined in
 /// <https://www.w3.org/TR/2017/CR-uievents-code-20170601/#key-legacy>.
@@ -254,3 +255,407 @@ pub mod special {
     pub const UNIDENTIFIED: &'static str = "Unidentified";
 }
 pub use self::special::*;
+
+/// Enum with various [`KeyboardEvent.code`] values
+/// as per the latest the latest (as of 11 February, 2023) [W3C Candidate Recommendation, 01 June 2017].
+///
+/// [`KeyboardEvent.code`]: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code
+/// [W3C Candidate Recommendation, 01 June 2017]: https://www.w3.org/TR/2017/CR-uievents-code-20170601/#code-value-tables
+#[cfg(any(feature = "enum", doc))]
+#[cfg_attr(doc_cfg, doc(cfg(feature = "enum")))]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(u8)]
+pub enum KeyboardEventCode {
+    /// Corresponds to [BACKQUOTE][crate::BACKQUOTE].
+    Backquote,
+    /// Corresponds to [BACKSLASH][crate::BACKSLASH].
+    Backslash,
+    /// Corresponds to [BACKSPACE][crate::BACKSPACE].
+    Backspace,
+    /// Corresponds to [BRACKET_LEFT][crate::BRACKET_LEFT].
+    BracketLeft,
+    /// Corresponds to [BRACKET_RIGHT][crate::BRACKET_RIGHT].
+    BracketRight,
+    /// Corresponds to [COMMA][crate::COMMA].
+    Comma,
+    /// Corresponds to [DIGIT0][crate::DIGIT0].
+    Digit0,
+    /// Corresponds to [DIGIT1][crate::DIGIT1].
+    Digit1,
+    /// Corresponds to [DIGIT2][crate::DIGIT2].
+    Digit2,
+    /// Corresponds to [DIGIT3][crate::DIGIT3].
+    Digit3,
+    /// Corresponds to [DIGIT4][crate::DIGIT4].
+    Digit4,
+    /// Corresponds to [DIGIT5][crate::DIGIT5].
+    Digit5,
+    /// Corresponds to [DIGIT6][crate::DIGIT6].
+    Digit6,
+    /// Corresponds to [DIGIT7][crate::DIGIT7].
+    Digit7,
+    /// Corresponds to [DIGIT8][crate::DIGIT8].
+    Digit8,
+    /// Corresponds to [DIGIT9][crate::DIGIT9].
+    Digit9,
+    /// Corresponds to [EQUAL][crate::EQUAL].
+    Equal,
+    /// Corresponds to [INTL_BACKSLASH][crate::INTL_BACKSLASH].
+    IntlBackslash,
+    /// Corresponds to [INTL_RO][crate::INTL_RO].
+    IntlRo,
+    /// Corresponds to [INTL_YEN][crate::INTL_YEN].
+    IntlYen,
+    /// Corresponds to [KEY_A][crate::KEY_A].
+    KeyA,
+    /// Corresponds to [KEY_B][crate::KEY_B].
+    KeyB,
+    /// Corresponds to [KEY_C][crate::KEY_C].
+    KeyC,
+    /// Corresponds to [KEY_D][crate::KEY_D].
+    KeyD,
+    /// Corresponds to [KEY_E][crate::KEY_E].
+    KeyE,
+    /// Corresponds to [KEY_F][crate::KEY_F].
+    KeyF,
+    /// Corresponds to [KEY_G][crate::KEY_G].
+    KeyG,
+    /// Corresponds to [KEY_H][crate::KEY_H].
+    KeyH,
+    /// Corresponds to [KEY_I][crate::KEY_I].
+    KeyI,
+    /// Corresponds to [KEY_J][crate::KEY_J].
+    KeyJ,
+    /// Corresponds to [KEY_K][crate::KEY_K].
+    KeyK,
+    /// Corresponds to [KEY_L][crate::KEY_L].
+    KeyL,
+    /// Corresponds to [KEY_M][crate::KEY_M].
+    KeyM,
+    /// Corresponds to [KEY_N][crate::KEY_N].
+    KeyN,
+    /// Corresponds to [KEY_O][crate::KEY_O].
+    KeyO,
+    /// Corresponds to [KEY_P][crate::KEY_P].
+    KeyP,
+    /// Corresponds to [KEY_Q][crate::KEY_Q].
+    KeyQ,
+    /// Corresponds to [KEY_R][crate::KEY_R].
+    KeyR,
+    /// Corresponds to [KEY_S][crate::KEY_S].
+    KeyS,
+    /// Corresponds to [KEY_T][crate::KEY_T].
+    KeyT,
+    /// Corresponds to [KEY_U][crate::KEY_U].
+    KeyU,
+    /// Corresponds to [KEY_V][crate::KEY_V].
+    KeyV,
+    /// Corresponds to [KEY_W][crate::KEY_W].
+    KeyW,
+    /// Corresponds to [KEY_X][crate::KEY_X].
+    KeyX,
+    /// Corresponds to [KEY_Y][crate::KEY_Y].
+    KeyY,
+    /// Corresponds to [KEY_Z][crate::KEY_Z].
+    KeyZ,
+    /// Corresponds to [MINUS][crate::MINUS].
+    Minus,
+    /// Corresponds to [PERIOD][crate::PERIOD].
+    Period,
+    /// Corresponds to [QUOTE][crate::QUOTE].
+    Quote,
+    /// Corresponds to [SEMICOLON][crate::SEMICOLON].
+    Semicolon,
+    /// Corresponds to [SLASH][crate::SLASH].
+    Slash,
+    /// Corresponds to [ALT_LEFT][crate::ALT_LEFT].
+    AltLeft,
+    /// Corresponds to [ALT_RIGHT][crate::ALT_RIGHT].
+    AltRight,
+    /// Corresponds to [CAPS_LOCK][crate::CAPS_LOCK].
+    CapsLock,
+    /// Corresponds to [CONTEXT_MENU][crate::CONTEXT_MENU].
+    ContextMenu,
+    /// Corresponds to [CONTROL_LEFT][crate::CONTROL_LEFT].
+    ControlLeft,
+    /// Corresponds to [CONTROL_RIGHT][crate::CONTROL_RIGHT].
+    ControlRight,
+    /// Corresponds to [ENTER][crate::ENTER].
+    Enter,
+    /// Corresponds to [META_LEFT][crate::META_LEFT].
+    MetaLeft,
+    /// Corresponds to [META_RIGHT][crate::META_RIGHT].
+    MetaRight,
+    /// Corresponds to [SHIFT_LEFT][crate::SHIFT_LEFT].
+    ShiftLeft,
+    /// Corresponds to [SHIFT_RIGHT][crate::SHIFT_RIGHT].
+    ShiftRight,
+    /// Corresponds to [SPACE][crate::SPACE].
+    Space,
+    /// Corresponds to [TAB][crate::TAB].
+    Tab,
+    /// Corresponds to [CONVERT][crate::CONVERT].
+    Convert,
+    /// Corresponds to [KANA_MODE][crate::KANA_MODE].
+    KanaMode,
+    /// Corresponds to [LANG1][crate::LANG1].
+    Lang1,
+    /// Corresponds to [LANG2][crate::LANG2].
+    Lang2,
+    /// Corresponds to [LANG3][crate::LANG3].
+    Lang3,
+    /// Corresponds to [LANG4][crate::LANG4].
+    Lang4,
+    /// Corresponds to [LANG5][crate::LANG5].
+    Lang5,
+    /// Corresponds to [NON_CONVERT][crate::NON_CONVERT].
+    NonConvert,
+    /// Corresponds to [DELETE][crate::DELETE].
+    Delete,
+    /// Corresponds to [END][crate::END].
+    End,
+    /// Corresponds to [HELP][crate::HELP].
+    Help,
+    /// Corresponds to [HOME][crate::HOME].
+    Home,
+    /// Corresponds to [INSERT][crate::INSERT].
+    Insert,
+    /// Corresponds to [PAGE_DOWN][crate::PAGE_DOWN].
+    PageDown,
+    /// Corresponds to [PAGE_UP][crate::PAGE_UP].
+    PageUp,
+    /// Corresponds to [ARROW_DOWN][crate::ARROW_DOWN].
+    ArrowDown,
+    /// Corresponds to [ARROW_LEFT][crate::ARROW_LEFT].
+    ArrowLeft,
+    /// Corresponds to [ARROW_RIGHT][crate::ARROW_RIGHT].
+    ArrowRight,
+    /// Corresponds to [ARROW_UP][crate::ARROW_UP].
+    ArrowUp,
+    /// Corresponds to [NUM_LOCK][crate::NUM_LOCK].
+    NumLock,
+    /// Corresponds to [NUMPAD0][crate::NUMPAD0].
+    Numpad0,
+    /// Corresponds to [NUMPAD1][crate::NUMPAD1].
+    Numpad1,
+    /// Corresponds to [NUMPAD2][crate::NUMPAD2].
+    Numpad2,
+    /// Corresponds to [NUMPAD3][crate::NUMPAD3].
+    Numpad3,
+    /// Corresponds to [NUMPAD4][crate::NUMPAD4].
+    Numpad4,
+    /// Corresponds to [NUMPAD5][crate::NUMPAD5].
+    Numpad5,
+    /// Corresponds to [NUMPAD6][crate::NUMPAD6].
+    Numpad6,
+    /// Corresponds to [NUMPAD7][crate::NUMPAD7].
+    Numpad7,
+    /// Corresponds to [NUMPAD8][crate::NUMPAD8].
+    Numpad8,
+    /// Corresponds to [NUMPAD9][crate::NUMPAD9].
+    Numpad9,
+    /// Corresponds to [NUMPAD_ADD][crate::NUMPAD_ADD].
+    NumpadAdd,
+    /// Corresponds to [NUMPAD_BACKSPACE][crate::NUMPAD_BACKSPACE].
+    NumpadBackspace,
+    /// Corresponds to [NUMPAD_CLEAR][crate::NUMPAD_CLEAR].
+    NumpadClear,
+    /// Corresponds to [NUMPAD_CLEAR_ENTRY][crate::NUMPAD_CLEAR_ENTRY].
+    NumpadClearEntry,
+    /// Corresponds to [NUMPAD_COMMA][crate::NUMPAD_COMMA].
+    NumpadComma,
+    /// Corresponds to [NUMPAD_DECIMAL][crate::NUMPAD_DECIMAL].
+    NumpadDecimal,
+    /// Corresponds to [NUMPAD_DIVIDE][crate::NUMPAD_DIVIDE].
+    NumpadDivide,
+    /// Corresponds to [NUMPAD_ENTER][crate::NUMPAD_ENTER].
+    NumpadEnter,
+    /// Corresponds to [NUMPAD_EQUAL][crate::NUMPAD_EQUAL].
+    NumpadEqual,
+    /// Corresponds to [NUMPAD_HASH][crate::NUMPAD_HASH].
+    NumpadHash,
+    /// Corresponds to [NUMPAD_MEMORY_ADD][crate::NUMPAD_MEMORY_ADD].
+    NumpadMemoryAdd,
+    /// Corresponds to [NUMPAD_MEMORY_CLEAR][crate::NUMPAD_MEMORY_CLEAR].
+    NumpadMemoryClear,
+    /// Corresponds to [NUMPAD_MEMORY_RECALL][crate::NUMPAD_MEMORY_RECALL].
+    NumpadMemoryRecall,
+    /// Corresponds to [NUMPAD_MEMORY_STORE][crate::NUMPAD_MEMORY_STORE].
+    NumpadMemoryStore,
+    /// Corresponds to [NUMPAD_MEMORY_SUBTRACT][crate::NUMPAD_MEMORY_SUBTRACT].
+    NumpadMemorySubtract,
+    /// Corresponds to [NUMPAD_MULTIPLY][crate::NUMPAD_MULTIPLY].
+    NumpadMultiply,
+    /// Corresponds to [NUMPAD_PAREN_LEFT][crate::NUMPAD_PAREN_LEFT].
+    NumpadParenLeft,
+    /// Corresponds to [NUMPAD_PAREN_RIGHT][crate::NUMPAD_PAREN_RIGHT].
+    NumpadParenRight,
+    /// Corresponds to [NUMPAD_STAR][crate::NUMPAD_STAR].
+    NumpadStar,
+    /// Corresponds to [NUMPAD_SUBTRACT][crate::NUMPAD_SUBTRACT].
+    NumpadSubtract,
+    /// Corresponds to [ESCAPE][crate::ESCAPE].
+    Escape,
+    /// Corresponds to [F1][crate::F1].
+    F1,
+    /// Corresponds to [F2][crate::F2].
+    F2,
+    /// Corresponds to [F3][crate::F3].
+    F3,
+    /// Corresponds to [F4][crate::F4].
+    F4,
+    /// Corresponds to [F5][crate::F5].
+    F5,
+    /// Corresponds to [F6][crate::F6].
+    F6,
+    /// Corresponds to [F7][crate::F7].
+    F7,
+    /// Corresponds to [F8][crate::F8].
+    F8,
+    /// Corresponds to [F9][crate::F9].
+    F9,
+    /// Corresponds to [F10][crate::F10].
+    F10,
+    /// Corresponds to [F11][crate::F11].
+    F11,
+    /// Corresponds to [F12][crate::F12].
+    F12,
+    /// Corresponds to [F13][crate::F13].
+    F13,
+    /// Corresponds to [F14][crate::F14].
+    F14,
+    /// Corresponds to [F15][crate::F15].
+    F15,
+    /// Corresponds to [F16][crate::F16].
+    F16,
+    /// Corresponds to [F17][crate::F17].
+    F17,
+    /// Corresponds to [F18][crate::F18].
+    F18,
+    /// Corresponds to [F19][crate::F19].
+    F19,
+    /// Corresponds to [FN][crate::FN].
+    Fn,
+    /// Corresponds to [FN_LOCK][crate::FN_LOCK].
+    FnLock,
+    /// Corresponds to [PRINT_SCREEN][crate::PRINT_SCREEN].
+    PrintScreen,
+    /// Corresponds to [SCROLL_LOCK][crate::SCROLL_LOCK].
+    ScrollLock,
+    /// Corresponds to [PAUSE][crate::PAUSE].
+    Pause,
+    /// Corresponds to [BROWSER_BACK][crate::BROWSER_BACK].
+    BrowserBack,
+    /// Corresponds to [BROWSER_FAVORITES][crate::BROWSER_FAVORITES].
+    BrowserFavorites,
+    /// Corresponds to [BROWSER_FORWARD][crate::BROWSER_FORWARD].
+    BrowserForward,
+    /// Corresponds to [BROWSER_HOME][crate::BROWSER_HOME].
+    BrowserHome,
+    /// Corresponds to [BROWSER_REFRESH][crate::BROWSER_REFRESH].
+    BrowserRefresh,
+    /// Corresponds to [BROWSER_SEARCH][crate::BROWSER_SEARCH].
+    BrowserSearch,
+    /// Corresponds to [BROWSER_STOP][crate::BROWSER_STOP].
+    BrowserStop,
+    /// Corresponds to [EJECT][crate::EJECT].
+    Eject,
+    /// Corresponds to [LAUNCH_APP1][crate::LAUNCH_APP1].
+    LaunchApp1,
+    /// Corresponds to [LAUNCH_APP2][crate::LAUNCH_APP2].
+    LaunchApp2,
+    /// Corresponds to [LAUNCH_MAIL][crate::LAUNCH_MAIL].
+    LaunchMail,
+    /// Corresponds to [MEDIA_PLAY_PAUSE][crate::MEDIA_PLAY_PAUSE].
+    MediaPlayPause,
+    /// Corresponds to [MEDIA_SELECT][crate::MEDIA_SELECT].
+    MediaSelect,
+    /// Corresponds to [MEDIA_STOP][crate::MEDIA_STOP].
+    MediaStop,
+    /// Corresponds to [MEDIA_TRACK_NEXT][crate::MEDIA_TRACK_NEXT].
+    MediaTrackNext,
+    /// Corresponds to [MEDIA_TRACK_PREVIOUS][crate::MEDIA_TRACK_PREVIOUS].
+    MediaTrackPrevious,
+    /// Corresponds to [POWER][crate::POWER].
+    Power,
+    /// Corresponds to [SLEEP][crate::SLEEP].
+    Sleep,
+    /// Corresponds to [AUDIO_VOLUME_DOWN][crate::AUDIO_VOLUME_DOWN].
+    AudioVolumeDown,
+    /// Corresponds to [AUDIO_VOLUME_MUTE][crate::AUDIO_VOLUME_MUTE].
+    AudioVolumeMute,
+    /// Corresponds to [AUDIO_VOLUME_UP][crate::AUDIO_VOLUME_UP].
+    AudioVolumeUp,
+    /// Corresponds to [WAKE_UP][crate::WAKE_UP].
+    WakeUp,
+    #[cfg(any(feature = "legacy", doc))]
+    #[cfg_attr(doc_cfg, doc(cfg(feature = "legacy")))]
+    /// Corresponds to [HYPER][crate::HYPER].
+    Hyper,
+    #[cfg(any(feature = "legacy", doc))]
+    #[cfg_attr(doc_cfg, doc(cfg(feature = "legacy")))]
+    /// Corresponds to [SUPER][crate::SUPER].
+    Super,
+    #[cfg(any(feature = "legacy", doc))]
+    #[cfg_attr(doc_cfg, doc(cfg(feature = "legacy")))]
+    /// Corresponds to [TURBO][crate::TURBO].
+    Turbo,
+    #[cfg(any(feature = "legacy", doc))]
+    #[cfg_attr(doc_cfg, doc(cfg(feature = "legacy")))]
+    /// Corresponds to [ABORT][crate::ABORT].
+    Abort,
+    #[cfg(any(feature = "legacy", doc))]
+    #[cfg_attr(doc_cfg, doc(cfg(feature = "legacy")))]
+    /// Corresponds to [RESUME][crate::RESUME].
+    Resume,
+    #[cfg(any(feature = "legacy", doc))]
+    #[cfg_attr(doc_cfg, doc(cfg(feature = "legacy")))]
+    /// Corresponds to [SUSPEND][crate::SUSPEND].
+    Suspend,
+    #[cfg(any(feature = "legacy", doc))]
+    #[cfg_attr(doc_cfg, doc(cfg(feature = "legacy")))]
+    /// Corresponds to [AGAIN][crate::AGAIN].
+    Again,
+    #[cfg(any(feature = "legacy", doc))]
+    #[cfg_attr(doc_cfg, doc(cfg(feature = "legacy")))]
+    /// Corresponds to [COPY][crate::COPY].
+    Copy,
+    #[cfg(any(feature = "legacy", doc))]
+    #[cfg_attr(doc_cfg, doc(cfg(feature = "legacy")))]
+    /// Corresponds to [CUT][crate::CUT].
+    Cut,
+    #[cfg(any(feature = "legacy", doc))]
+    #[cfg_attr(doc_cfg, doc(cfg(feature = "legacy")))]
+    /// Corresponds to [FIND][crate::FIND].
+    Find,
+    #[cfg(any(feature = "legacy", doc))]
+    #[cfg_attr(doc_cfg, doc(cfg(feature = "legacy")))]
+    /// Corresponds to [OPEN][crate::OPEN].
+    Open,
+    #[cfg(any(feature = "legacy", doc))]
+    #[cfg_attr(doc_cfg, doc(cfg(feature = "legacy")))]
+    /// Corresponds to [PASTE][crate::PASTE].
+    Paste,
+    #[cfg(any(feature = "legacy", doc))]
+    #[cfg_attr(doc_cfg, doc(cfg(feature = "legacy")))]
+    /// Corresponds to [PROPS][crate::PROPS].
+    Props,
+    #[cfg(any(feature = "legacy", doc))]
+    #[cfg_attr(doc_cfg, doc(cfg(feature = "legacy")))]
+    /// Corresponds to [SELECT][crate::SELECT].
+    Select,
+    #[cfg(any(feature = "legacy", doc))]
+    #[cfg_attr(doc_cfg, doc(cfg(feature = "legacy")))]
+    /// Corresponds to [UNDO][crate::UNDO].
+    Undo,
+    #[cfg(any(feature = "non_standard_intl", doc))]
+    #[cfg_attr(doc_cfg, doc(cfg(feature = "non_standard_intl")))]
+    /// Corresponds to [HIRAGANA][crate::HIRAGANA].
+    Hiragana,
+    #[cfg(any(feature = "non_standard_intl", doc))]
+    #[cfg_attr(doc_cfg, doc(cfg(feature = "non_standard_intl")))]
+    /// Corresponds to [KATAKANA][crate::KATAKANA].
+    Katakana,
+    /// Corresponds to [UNIDENTIFIED][crate::UNIDENTIFIED].
+    Unidentified,
+}
