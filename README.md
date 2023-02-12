@@ -12,8 +12,10 @@ property from [`web_sys::KeyboardEvent::code(&self)`].
 ## Features
 
 * `legacy` (disabled by default) - enables constants for legacy keys.
-* `non_standard_intl` (disabled by default) - enables constants for non-standard
+* `non_standard_intl` (disabled by default) - enables constants for non-standard.
 keys on international keyboards.
+* `enum` (disabled by default) - enables the `KeyboardEventCode` enum with all
+the known constants.
 
 ## License
 
