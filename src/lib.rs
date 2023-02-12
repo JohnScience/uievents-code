@@ -1,6 +1,9 @@
 #![doc=include_str!("../README.md")]
 #![cfg_attr(doc_cfg, feature(doc_cfg))]
 
+#[cfg(any(feature = "enum", doc))]
+use strum_macros::{FromRepr, EnumCount};
+
 /// Writing System Keys as defined in
 /// <https://www.w3.org/TR/2017/CR-uievents-code-20170601/#key-alphanumeric-writing-system>.
 pub mod writing_system {
@@ -263,7 +266,7 @@ pub use self::special::*;
 /// [W3C Candidate Recommendation, 01 June 2017]: https://www.w3.org/TR/2017/CR-uievents-code-20170601/#code-value-tables
 #[cfg(any(feature = "enum", doc))]
 #[cfg_attr(doc_cfg, doc(cfg(feature = "enum")))]
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, EnumCount, FromRepr)]
 #[repr(u8)]
 pub enum KeyboardEventCode {
     /// Corresponds to [BACKQUOTE][crate::BACKQUOTE].

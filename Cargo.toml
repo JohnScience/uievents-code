@@ -1,6 +1,6 @@
 [package]
 name = "uievents-code"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Dmitrii Demenev <demenev.dmitriy1@gmail.com>"]
 edition = "2021"
 rust-version = "1.56.1" # https://github.com/foresterre/cargo-msrv/issues/244
@@ -22,11 +22,13 @@ autotests = false
 autobenches = false
 
 [dependencies]
+strum_macros = { version = "0.24", optional = true }
+strum = { version = "0.24", optional = true }
 
 [features]
 legacy = []
 non_standard_intl = []
-enum = []
+enum = ["strum_macros", "strum"]
 
 [package.metadata.docs.rs]
 all-features = true
